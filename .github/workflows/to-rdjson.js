@@ -18,7 +18,10 @@ const source = {
   name: "spectral",
   url: "https://meta.stoplight.io/",
 };
-const pos = ({ line, character }) => ({ line, column: character });
+const pos = ({ line, character }) => ({
+  line: line + 1,
+  column: character + 1,
+});
 const diagnostics = errors.map(({ message, source, range, code }) => ({
   message,
   location: {
