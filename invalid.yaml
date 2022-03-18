@@ -31,3 +31,4 @@ components:
           type: string
         foo:
           type: integer
+    Test:
