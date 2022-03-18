@@ -1,7 +1,7 @@
 {
   "name": "validate-openapi-schema-on-github-actions",
   "scripts": {
-    "check": "spectral lint invalid.yaml -f pretty"
+    "check": "spectral lint invalid.yaml"
   },
   "devDependencies": {
     "@stoplight/spectral-cli": "^6.3.0",
