@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Invalid Spec
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: status
+paths:
+  /ping:
+    get:
+      tags: [status]
+      summary: Checks if the server is online
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    DuplicatedName:
+    DuplicatedName:
+    Empty:
+    UnexpectedType:
+      type: aaaaaaaaaa
+    DuplicatedProp:
+      type: object
+      properties:
+        foo:
+          type: string
+        foo:
+          type: integer

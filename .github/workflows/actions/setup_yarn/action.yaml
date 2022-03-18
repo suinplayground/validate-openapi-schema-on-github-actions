@@ -1,0 +1,35 @@
+name: "Setup Node.js and Yarn"
+description: "Setup Node.js and Yarn"
+inputs:
+  node-version:
+    description: "Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0"
+    required: false
+    default: "16"
+  install:
+    description: "Install the npm packages if true"
+    required: false
+    default: ${{ true }}
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v2
+      with:
+        node-version: ${{ inputs.node-version }}
+    - run: node -v
+      shell: bash
+    - run: corepack -v
+      shell: bash
+    - run: corepack enable
+      shell: bash
+    - run: yarn -v
+      shell: bash
+    - run: yarn config
+      shell: bash
+    - if: ${{ !env.ACT }} # https://github.com/nektos/act/issues/285#issuecomment-987550101
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: yarn
+    - if: inputs.install
+      run: yarn install --immutable
+      shell: bash
